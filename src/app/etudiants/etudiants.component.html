@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h1>Liste des étudiants</h1>
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>CIN</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Date de naissance</th>
+                        <th>Moyenne</th>
+
+                    </tr>
+                </thead>
+                <tbody *ngFor="let e of tab_etu">
+                    <tr>
+                        <td>{{ e.cin }}</td>
+                        <td>{{ e.nom | uppercase }} </td>
+                        <td>{{ e.prenom }}</td>
+                        <td>{{ e.dateNaiss | date:'dd/MM/yyyy'}}</td>
+                        <td>{{ e.moy }}</td>
+                        <td>
+                            <a (click)="supprimerEtudiant(e)" class="btn btn-danger">Supprimer</a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
