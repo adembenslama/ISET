@@ -17,10 +17,15 @@ export class EtudiantsComponent implements OnInit {
       'Etes-vous sûr de vouloir supprimer  ' + e.prenom + ' ' + e.nom + '?'
     );
     if (rep) {
-      let pos = this.tab_etu.indexOf(e);
-      this.studentService.delStudent(pos);
-      console.log('Suppression avec succes :' + pos);
+      this.studentService.delStudent(e);
+      console.log('Suppression avec succes !');
     }
+  }
+  condition(num: number) {
+    if (num > 10) {
+      return true;
+    }
+    return false;
   }
   ngOnInit(): void {}
 }

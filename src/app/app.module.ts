@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { EtudiantsComponent } from './etudiants/etudiants.component';
 import { AddEtudiantComponent } from './add-etudiant/add-etudiant.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateEtudiantComponent } from './update-etudiant/update-etudiant.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     EtudiantsComponent,
     AddEtudiantComponent,
+    UpdateEtudiantComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
