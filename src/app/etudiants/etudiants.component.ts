@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Etudiant } from '../model/etudiant.model';
 import { StudentService } from '../services/student.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-etudiants',
@@ -9,7 +10,12 @@ import { StudentService } from '../services/student.service';
 })
 export class EtudiantsComponent implements OnInit {
   tab_etu: Etudiant[];
-  constructor(private studentService: StudentService) {
+  isAdmin: boolean;
+  constructor(
+    private studentService: StudentService,
+    public auth: AuthService
+  ) {
+    this.isAdmin = auth.testerAdmin();
     this.tab_etu = studentService.listStudents();
   }
   supprimerEtudiant(e: Etudiant) {
@@ -21,11 +27,6 @@ export class EtudiantsComponent implements OnInit {
       console.log('Suppression avec succes !');
     }
   }
-  condition(num: number) {
-    if (num > 10) {
-      return true;
-    }
-    return false;
-  }
+  redoubleStyle = { color: 'red' };
   ngOnInit(): void {}
 }

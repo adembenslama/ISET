@@ -107,4 +107,16 @@ export class StudentService {
     this.addStudent(e);
     console.log(this.tab_etu);
   }
+
+  getNbStudents(): number {
+    return this.tab_etu.length;
+  }
+  getNbGroups(): number {
+    return this.tab_grp.length;
+  }
+  getAvgMoyennes(): number {
+    let moy = 0;
+    this.tab_etu.forEach((e) => (moy += e.moy / this.tab_etu.length));
+    return moy;
+  }
 }

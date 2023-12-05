@@ -22,17 +22,12 @@
                         <td>{{ e.prenom }}</td>
                         <td>{{ e.dateNaiss | date:'dd/MM/yyyy'}}</td>
                         <td>{{ e.grp.nomGrp }}</td>
-                        <td [ngStyle]="{
-                            color: e.moy<10 ?  'red'  : 'black',
-                        
-                        }">{{ e.moy }}</td>
+                        <td [ngStyle]="e.moy<10 ? redoubleStyle  : {}">{{ e.moy }}</td>
                         <td>
                             <p *ngIf="e.moy>=10"> Admis </p>
-                            <p *ngIf="e.moy<10" [ngStyle]="{
-                                color: 'red',
-                            }"> Redouble </p>
+                            <p *ngIf="e.moy<10" [ngStyle]="redoubleStyle"> Redouble </p>
                         </td>
-                        <td>
+                        <td *ngIf="isAdmin">
                             <a class="btn btn-danger" (click)="supprimerEtudiant(e)"><img src="../assets/img/delete.png"
                                     height="32" width="32"></a>
                             <a class="btn btn-warning" [routerLink]="['/updateEtudiant',e.cin]">

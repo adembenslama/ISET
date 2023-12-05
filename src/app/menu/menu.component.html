@@ -7,12 +7,20 @@
 
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="/etudiants">Etudiants</a>
-                <a class="nav-link" href="/add-etudiant">Ajout etudiant</a>
-                <a class="nav-link" href="#">Utilisateur</a>
+        <div *ngIf="authServ.isConnected">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" routerLink="/etudiants">Etudiants</a>
+                    <a class="nav-link" routerLink="/add-etudiant" *ngIf="authServ.testerAdmin() == true">Ajout
+                        etudiant</a>
+                    <a class="nav-link" routerLink="/search-etudiant">Recherche Etudiant</a>
+                    <a class="nav-link" (click)="seDeconnecter()">Se Deconnecter</a>
+
+
+                </div>
             </div>
+            <a class="nav-link" routerLink="#">[{{authServ.userCourant}}]</a>
         </div>
+
     </div>
 </nav>
